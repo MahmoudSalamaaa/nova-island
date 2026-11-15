@@ -1,0 +1,9 @@
+[package]
+name = "nova-assets"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+# The unchanged island, Settings and mini player files from the repo root, embedded in the binary.
+[build-dependencies]
+sha2 = "0.10"

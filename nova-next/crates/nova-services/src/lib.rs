@@ -1,0 +1,21 @@
+//! Nova Island's services, each matching its 1.7 module.
+pub mod apps;
+pub mod appnotify;
+pub mod calendar;
+pub mod ctx;
+pub mod network;
+pub mod netspeed;
+pub mod news;
+pub mod plugins;
+pub mod prayer;
+pub mod privacy;
+pub mod system;
+pub mod tasks;
+pub mod downloads;
+pub mod fdlibm;
+pub mod shelf;
+pub mod screenshot;
+pub mod shell;
+pub mod smartclip;
+pub mod updater;
+pub mod url;

@@ -1,0 +1,464 @@
+[
+  {
+    "bridge": "nova",
+    "file": "preload.js",
+    "channels": [
+      {
+        "kind": "event",
+        "channel": "anchor"
+      },
+      {
+        "kind": "event",
+        "channel": "apps"
+      },
+      {
+        "kind": "event",
+        "channel": "backdrop"
+      },
+      {
+        "kind": "event",
+        "channel": "calendar"
+      },
+      {
+        "kind": "event",
+        "channel": "clip-smart"
+      },
+      {
+        "kind": "event",
+        "channel": "clipboard"
+      },
+      {
+        "kind": "event",
+        "channel": "dl-thumb"
+      },
+      {
+        "kind": "event",
+        "channel": "downloads"
+      },
+      {
+        "kind": "event",
+        "channel": "features"
+      },
+      {
+        "kind": "event",
+        "channel": "hover"
+      },
+      {
+        "kind": "event",
+        "channel": "media"
+      },
+      {
+        "kind": "event",
+        "channel": "near"
+      },
+      {
+        "kind": "event",
+        "channel": "network"
+      },
+      {
+        "kind": "event",
+        "channel": "news"
+      },
+      {
+        "kind": "event",
+        "channel": "plugin-progress"
+      },
+      {
+        "kind": "event",
+        "channel": "plugins"
+      },
+      {
+        "kind": "event",
+        "channel": "prayer"
+      },
+      {
+        "kind": "event",
+        "channel": "privacy"
+      },
+      {
+        "kind": "event",
+        "channel": "recording"
+      },
+      {
+        "kind": "event",
+        "channel": "reminder-now"
+      },
+      {
+        "kind": "event",
+        "channel": "saver"
+      },
+      {
+        "kind": "event",
+        "channel": "screenshot"
+      },
+      {
+        "kind": "event",
+        "channel": "shelf"
+      },
+      {
+        "kind": "event",
+        "channel": "shot-saved"
+      },
+      {
+        "kind": "event",
+        "channel": "stats"
+      },
+      {
+        "kind": "event",
+        "channel": "toggle"
+      },
+      {
+        "kind": "event",
+        "channel": "update"
+      },
+      {
+        "kind": "event",
+        "channel": "visibility"
+      },
+      {
+        "kind": "event",
+        "channel": "weather"
+      },
+      {
+        "kind": "invoke",
+        "channel": "apps-all"
+      },
+      {
+        "kind": "invoke",
+        "channel": "apps-list"
+      },
+      {
+        "kind": "invoke",
+        "channel": "apps-running"
+      },
+      {
+        "kind": "invoke",
+        "channel": "cal-get"
+      },
+      {
+        "kind": "invoke",
+        "channel": "dl-snapshot"
+      },
+      {
+        "kind": "invoke",
+        "channel": "island-features"
+      },
+      {
+        "kind": "invoke",
+        "channel": "mini-open"
+      },
+      {
+        "kind": "invoke",
+        "channel": "net-get"
+      },
+      {
+        "kind": "invoke",
+        "channel": "plugins-active"
+      },
+      {
+        "kind": "invoke",
+        "channel": "prayer-snapshot"
+      },
+      {
+        "kind": "invoke",
+        "channel": "shelf-list"
+      },
+      {
+        "kind": "invoke",
+        "channel": "system-snapshot"
+      },
+      {
+        "kind": "send",
+        "channel": "apps-add"
+      },
+      {
+        "kind": "send",
+        "channel": "apps-launch"
+      },
+      {
+        "kind": "send",
+        "channel": "apps-remove"
+      },
+      {
+        "kind": "send",
+        "channel": "apps-reorder"
+      },
+      {
+        "kind": "send",
+        "channel": "clickable"
+      },
+      {
+        "kind": "send",
+        "channel": "clip-action"
+      },
+      {
+        "kind": "send",
+        "channel": "clip-clear"
+      },
+      {
+        "kind": "send",
+        "channel": "clip-copy"
+      },
+      {
+        "kind": "send",
+        "channel": "context-menu"
+      },
+      {
+        "kind": "send",
+        "channel": "dl-control"
+      },
+      {
+        "kind": "send",
+        "channel": "drag-end"
+      },
+      {
+        "kind": "send",
+        "channel": "drag-start"
+      },
+      {
+        "kind": "send",
+        "channel": "features-set"
+      },
+      {
+        "kind": "send",
+        "channel": "focus-input"
+      },
+      {
+        "kind": "send",
+        "channel": "island-ready"
+      },
+      {
+        "kind": "send",
+        "channel": "island-rect"
+      },
+      {
+        "kind": "send",
+        "channel": "media-cmd"
+      },
+      {
+        "kind": "send",
+        "channel": "news-dismiss"
+      },
+      {
+        "kind": "send",
+        "channel": "news-open"
+      },
+      {
+        "kind": "send",
+        "channel": "news-read"
+      },
+      {
+        "kind": "send",
+        "channel": "news-shown"
+      },
+      {
+        "kind": "send",
+        "channel": "open-meeting"
+      },
+      {
+        "kind": "send",
+        "channel": "open-settings"
+      },
+      {
+        "kind": "send",
+        "channel": "pinned"
+      },
+      {
+        "kind": "send",
+        "channel": "plugin-setting"
+      },
+      {
+        "kind": "send",
+        "channel": "shelf-add"
+      },
+      {
+        "kind": "send",
+        "channel": "shelf-clear"
+      },
+      {
+        "kind": "send",
+        "channel": "shelf-drag"
+      },
+      {
+        "kind": "send",
+        "channel": "shelf-open"
+      },
+      {
+        "kind": "send",
+        "channel": "shelf-remove"
+      },
+      {
+        "kind": "send",
+        "channel": "shelf-reveal"
+      },
+      {
+        "kind": "send",
+        "channel": "shot-to-shelf"
+      },
+      {
+        "kind": "send",
+        "channel": "update-install"
+      }
+    ]
+  },
+  {
+    "bridge": "prefs",
+    "file": "prefs/preload.js",
+    "channels": [
+      {
+        "kind": "event",
+        "channel": "calendar"
+      },
+      {
+        "kind": "event",
+        "channel": "features"
+      },
+      {
+        "kind": "event",
+        "channel": "general"
+      },
+      {
+        "kind": "event",
+        "channel": "location"
+      },
+      {
+        "kind": "event",
+        "channel": "plugin-progress"
+      },
+      {
+        "kind": "event",
+        "channel": "plugins-list"
+      },
+      {
+        "kind": "event",
+        "channel": "show-page"
+      },
+      {
+        "kind": "invoke",
+        "channel": "bridge-status"
+      },
+      {
+        "kind": "invoke",
+        "channel": "cal-get"
+      },
+      {
+        "kind": "invoke",
+        "channel": "cal-set"
+      },
+      {
+        "kind": "invoke",
+        "channel": "copy-report"
+      },
+      {
+        "kind": "invoke",
+        "channel": "dl-folder-add"
+      },
+      {
+        "kind": "invoke",
+        "channel": "dl-folder-remove"
+      },
+      {
+        "kind": "invoke",
+        "channel": "dl-folders"
+      },
+      {
+        "kind": "invoke",
+        "channel": "features-get"
+      },
+      {
+        "kind": "invoke",
+        "channel": "general-get"
+      },
+      {
+        "kind": "invoke",
+        "channel": "loc-get"
+      },
+      {
+        "kind": "invoke",
+        "channel": "loc-search"
+      },
+      {
+        "kind": "invoke",
+        "channel": "plugin-install"
+      },
+      {
+        "kind": "invoke",
+        "channel": "plugin-install-file"
+      },
+      {
+        "kind": "invoke",
+        "channel": "plugins-list"
+      },
+      {
+        "kind": "send",
+        "channel": "features-reset"
+      },
+      {
+        "kind": "send",
+        "channel": "features-set"
+      },
+      {
+        "kind": "send",
+        "channel": "general-set"
+      },
+      {
+        "kind": "send",
+        "channel": "loc-set"
+      },
+      {
+        "kind": "send",
+        "channel": "open-log"
+      },
+      {
+        "kind": "send",
+        "channel": "open-support"
+      },
+      {
+        "kind": "send",
+        "channel": "plugin-enable"
+      },
+      {
+        "kind": "send",
+        "channel": "plugin-remove"
+      },
+      {
+        "kind": "send",
+        "channel": "plugin-setting"
+      },
+      {
+        "kind": "send",
+        "channel": "prefs-window"
+      },
+      {
+        "kind": "send",
+        "channel": "reminder-preview"
+      }
+    ]
+  },
+  {
+    "bridge": "mini",
+    "file": "mini/preload.js",
+    "channels": [
+      {
+        "kind": "event",
+        "channel": "mini-hover"
+      },
+      {
+        "kind": "send",
+        "channel": "mini-close"
+      },
+      {
+        "kind": "send",
+        "channel": "mini-resize-end"
+      },
+      {
+        "kind": "send",
+        "channel": "mini-resize-start"
+      },
+      {
+        "kind": "send",
+        "channel": "mini-time"
+      }
+    ]
+  }
+]

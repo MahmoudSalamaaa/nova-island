@@ -1,0 +1,12 @@
+# Cargo's build output (or set CARGO_TARGET_DIR to build elsewhere)
+target/
+# the adhan recordings are kept out of the repository (their licence is unknown); without them the
+# build works and Settings › Prayer & Dhikr asks for a file
+pages/sounds/*.mp3
+# old experiments
+spikes/
+# internal: the design-file sync and working plans
+tools/figma/
+docs/
+# measurement runs
+parity/measure/results/

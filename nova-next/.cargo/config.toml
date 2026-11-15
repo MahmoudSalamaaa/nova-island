@@ -1,0 +1,7 @@
+# Build output goes to nova-next/target (ignored by git), or wherever CARGO_TARGET_DIR points.
+
+# The C runtime goes inside the exe (1.8.1): 1.8.0 needed VCRUNTIME140.dll and
+# VCRUNTIME140_1.dll from the Visual C++ Redistributable, and on a PC without it the island
+# never opened (issue 5). Electron (1.7) brought its own copy.
+[target.x86_64-pc-windows-msvc]
+rustflags = ["-C", "target-feature=+crt-static"]

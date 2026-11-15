@@ -64,11 +64,16 @@ Requires Windows 10 or 11 (64-bit).
 
 ## Build from source
 
+Nova Island is written in Rust; the app is in [`nova-next/`](nova-next/). You need Windows 10/11 and
+[Rust](https://rustup.rs) (MSVC toolchain):
+
 ```bash
-npm install
-npm start          # run it
-npm run dist       # build the installer into dist/
+cd nova-next
+cargo build --release -p nova-app     # target/release/nova-island.exe
 ```
+
+Everything else (how the pages and the app fit together, tests, the installers) is in
+[nova-next/README.md](nova-next/README.md). Want to help? Read [CONTRIBUTING.md](CONTRIBUTING.md) first.
 
 ## Support Nova Island ☕
 
@@ -85,6 +90,6 @@ Nova Island is free software, licensed under the [GNU General Public License v3.
 
 Copyright © 2026 Nova Island by AmerTech.
 
-The Qur'an font in `fonts/` (KFGQPC HAFS Uthmanic Script by the King Fahd Glorious Quran Printing Complex) is included unmodified under its own license — see [fonts/KFGQPC-LICENSE.txt](fonts/KFGQPC-LICENSE.txt). It is not covered by the GPL.
+The Qur'an font in `fonts/` (KFGQPC HAFS Uthmanic Script by the King Fahd Glorious Quran Printing Complex) is included unmodified under its own license — see [fonts/KFGQPC-LICENSE.txt](fonts/KFGQPC-LICENSE.txt). It is not covered by the GPL. The Aref Ruqaa font in `nova-next/assets/fonts/` is under the SIL Open Font License — see [OFL.txt](nova-next/assets/fonts/OFL.txt).
 
 The name "Nova Island" and its logo are not covered by the GPL; please use a different name for modified versions.

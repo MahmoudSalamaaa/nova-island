@@ -1,0 +1,12 @@
+[package]
+name = "nova-sign"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+# Checks news items and plugins against AmerTech's public key (signing.js), byte for byte the same
+# canonical text and the same Ed25519 check.
+[dependencies]
+ed25519-dalek = { version = "2", default-features = false }
+serde_json = { version = "1", features = ["preserve_order", "float_roundtrip"] }
+nova-core = { path = "../nova-core" }

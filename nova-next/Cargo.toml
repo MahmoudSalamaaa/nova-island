@@ -1,0 +1,13 @@
+[workspace]
+resolver = "2"
+members = ["crates/*"]
+
+[profile.release]
+opt-level = "z"
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+# (1.8.7) the exe carries no symbols, but its PDB does (function names and lines, kept beside each
+# build by the installer scripts): Partner Center's crash stacks were bare offsets without one
+strip = false
+debug = "line-tables-only"

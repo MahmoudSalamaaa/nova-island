@@ -1,0 +1,67 @@
+/* Settings' own styles in 1.8, on top of prefs.css (which stays as 1.7 has it). */
+
+/* Facebook and Telegram side by side at the foot of the sidebar */
+.side-socials { margin: auto 0 10px; display: flex; gap: 6px; }
+.side-socials .side-social { margin: 0; flex: 1; min-width: 0; justify-content: center; padding: 0 8px; }
+.side-social.tg { background: rgba(42, 171, 238, .12); box-shadow: inset 0 0 0 1px rgba(42, 171, 238, .28); }
+.side-social.tg:hover { background: rgba(42, 171, 238, .22); color: #fff; }
+.side-social.tg svg { fill: #2aabee; }
+
+/* Arabic (1.8.3): right to left. A switch is on with its knob on the left, as Windows draws it */
+html[dir="rtl"] .sw { transform: scaleX(-1); }
+html[dir="rtl"] body { font-family: "Segoe UI", "Segoe UI Variable Text", Tahoma, sans-serif; }
+.plug-ico.tasks { background: rgba(10, 132, 255, .14); color: #4aa3ff; }
+
+/* (1.8.4) hidden while it opens in Arabic, until the Arabic is in place (i18n-early.js) */
+html.i18n-wait body { visibility: hidden; }
+
+/* Settings › Widgets (1.8): every widget and ready group as its picture; a click adds it */
+.wg-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+.wg-tile { position: relative; display: flex; flex-direction: column; gap: 10px; padding: 10px 10px 12px; border-radius: 16px; background: rgba(255, 255, 255, .05); border: 1px solid rgba(255, 255, 255, .06); text-align: start; color: var(--text-1); transition: background .15s, border-color .15s, transform .2s var(--spring); }
+.wg-tile.wide { grid-column: span 2; }
+.wg-tile:hover { background: rgba(255, 255, 255, .09); }
+.wg-tile:active { transform: scale(.97); }
+.wg-tile.on { border-color: var(--accent); background: rgba(111, 140, 255, .12); }
+.wg-tile img { display: block; width: 100%; height: auto; border-radius: 12px; }
+.wg-tile-foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 0 2px; }
+.wg-tile-name { font-size: 12.5px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.wg-chip { flex: none; height: 24px; padding: 0 10px; border-radius: 12px; display: inline-flex; align-items: center; font-size: 11.5px; font-weight: 600; background: rgba(255, 255, 255, .1); color: var(--text-2); }
+.wg-tile:hover .wg-chip { background: var(--accent); color: #fff; }
+.wg-tile.on .wg-chip { background: rgba(111, 140, 255, .25); color: #c9d3ff; }
+.wg-tile.on:hover .wg-chip { background: rgba(255, 69, 58, .25); color: #ff8a80; }
+.wg-mini { position: relative; }
+.wg-mini img { position: absolute; border-radius: 6px; }
+.wg-now-row { display: flex; align-items: center; gap: 12px; padding: 10px 14px; }
+.wg-now-row + .wg-now-row { border-top: 1px solid rgba(255, 255, 255, .06); }
+.wg-thumbs { display: flex; gap: 4px; flex: none; }
+.wg-thumbs img { height: 40px; width: auto; border-radius: 6px; }
+.wg-now-name { flex: 1; min-width: 0; font-weight: 600; }
+.wg-now-name small { display: block; font-weight: 400; color: var(--text-3); font-size: 11.5px; }
+.wg-empty { padding: 16px; color: var(--text-3); font-size: 12.5px; text-align: center; }
+/* not out yet: seen, greyed, a "coming soon" tag, no click */
+.wg-tile.soon { cursor: default; }
+.wg-tile.soon img, .wg-tile.soon .wg-mini { opacity: .45; filter: grayscale(.6); }
+.wg-tile.soon:hover { background: rgba(255, 255, 255, .05); }
+.wg-tile.soon:active { transform: none; }
+.wg-tile.soon .wg-chip, .wg-tile.soon:hover .wg-chip { background: rgba(255, 214, 10, .14); color: #ffd60a; }
+
+/* an update is waiting (1.8.6, update-bar.js): a bar that stays at the top of every page */
+.update-bar { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; gap: 14px; margin: 0 0 18px; padding: 12px 16px; border-radius: 14px;
+  background: linear-gradient(90deg, rgba(48, 209, 88, .16), rgba(111, 140, 255, .14)), #17171f; box-shadow: inset 0 0 0 1px rgba(48, 209, 88, .38), 0 10px 24px -12px rgba(0, 0, 0, .7); }
+.update-bar[hidden] { display: none; }
+.update-bar > i { flex: none; width: 10px; height: 10px; border-radius: 50%; background: #30d158; box-shadow: 0 0 0 4px rgba(48, 209, 88, .2); }
+.update-bar .txt { flex: 1; min-width: 0; }
+.update-bar .txt b { font-weight: 700; }
+.update-bar .ver { margin: 0 8px; font-weight: 600; color: #8ef0a8; direction: ltr; unicode-bidi: isolate; }
+.update-bar small { display: block; color: var(--text-2); font-size: 12px; margin-top: 2px; }
+/* Settings › General › Check for updates (1.8.6): what the check found */
+#update-check-row .upd-ver { direction: ltr; unicode-bidi: isolate; font-weight: 600; }
+#update-check-row[data-tone="ok"] small { color: #8ef0a8; }
+#update-check-row[data-tone="new"] small { color: #c9d3ff; }
+#update-check-row[data-tone="bad"] small { color: #ff8a80; }
+
+/* (1.8.7) the adhan's file */
+#adhan-row .adhan-btns, .adhan-row .adhan-btns { display: flex; gap: 6px; flex: none; }
+#adhan-name, .adhan-row .adhan-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 220px; display: block; }
+/* (1.8.7) a feature that isn't out yet */
+.row.soon { opacity: .55; cursor: default; }

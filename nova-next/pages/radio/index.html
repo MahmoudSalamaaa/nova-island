@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self' data:">
+  <title>إذاعة القرآن الكريم</title>
+  <link rel="stylesheet" href="../themes.css">
+  <link rel="stylesheet" href="../prefs/prefs.css">
+  <link rel="stylesheet" href="radio.css">
+</head>
+<body>
+  <header class="titlebar" dir="ltr">
+    <div class="brand">
+      <span class="logo" aria-hidden="true"><i></i></span>
+      <b>إذاعة القرآن الكريم</b>
+    </div>
+    <div class="win-btns">
+      <button data-win="minimize" aria-label="Minimize"><svg viewBox="0 0 12 12"><path d="M2 6h8"/></svg></button>
+      <button data-win="close" class="close" aria-label="Close"><svg viewBox="0 0 12 12"><path d="M2.5 2.5l7 7M9.5 2.5l-7 7"/></svg></button>
+    </div>
+  </header>
+
+  <div class="body">
+    <nav class="side" aria-label="المجموعات">
+      <label class="search">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input type="search" id="find" placeholder="ابحث عن قارئ أو إذاعة" spellcheck="false" autocomplete="off">
+      </label>
+      <div id="groups"></div>
+    </nav>
+    <main class="content" id="content"></main>
+  </div>
+  <script src="radio.js"></script>
+</body>
+</html>

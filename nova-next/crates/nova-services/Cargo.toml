@@ -1,0 +1,19 @@
+[package]
+name = "nova-services"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+# The app's services (smartclip.js, calendar.js, and from step 6 apps, shelf, system, network, news,
+# plugins, downloads, privacy, screenshots, updates), each matching its 1.7 module.
+[dependencies]
+nova-core = { path = "../nova-core" }
+nova-prayer = { path = "../nova-prayer" }
+nova-sys = { path = "../nova-sys" }
+nova-sign = { path = "../nova-sign" }
+sha2 = "0.10"
+serde_json = { version = "1", features = ["preserve_order", "float_roundtrip"] }
+
+[dependencies.windows]
+version = "0.62"
+features = ["Win32_Foundation", "Win32_Globalization", "Win32_NetworkManagement_IpHelper", "Win32_NetworkManagement_Ndis", "Win32_Networking_WinSock", "Win32_System_Com", "Win32_System_Registry", "Win32_System_Threading", "Win32_Storage_FileSystem", "Win32_UI_Shell", "Win32_UI_Shell_Common", "Win32_UI_WindowsAndMessaging"]

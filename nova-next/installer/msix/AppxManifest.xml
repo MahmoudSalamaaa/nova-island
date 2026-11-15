@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The Microsoft Store package of Nova Island (built by build.ps1, which fills in {VERSION}).
+     Same identity, app path and startup task as 1.7.0's (reference/AppxManifest-1.7.0.xml), so
+     the Store delivers it as an update; plus the notification listener for "App notifications on
+     the island". -->
+<Package
+   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+   xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+   xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
+   xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities">
+  <Identity Name="AmerTech.NovaIsland"
+    ProcessorArchitecture="x64"
+    Publisher="CN=8BA7D487-B6B1-48CC-A9BE-EAC4A654C421"
+    Version="{VERSION}.0" />
+  <Properties>
+    <DisplayName>Nova Island</DisplayName>
+    <PublisherDisplayName>AmerTech</PublisherDisplayName>
+    <Description>A living island for your Windows desktop</Description>
+    <Logo>assets\StoreLogo.png</Logo>
+  </Properties>
+  <Resources>
+    <Resource Language="en-US" />
+    <Resource Language="ar" />
+  </Resources>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.17763.0" MaxVersionTested="10.0.26100.0" />
+  </Dependencies>
+  <Capabilities>
+    <uap3:Capability Name="userNotificationListener" />
+    <rescap:Capability Name="runFullTrust" />
+  </Capabilities>
+  <Applications>
+    <Application Id="NovaIsland" Executable="app\Nova Island.exe" EntryPoint="Windows.FullTrustApplication">
+      <uap:VisualElements
+       BackgroundColor="transparent"
+       DisplayName="Nova Island"
+       Square150x150Logo="assets\Square150x150Logo.png"
+       Square44x44Logo="assets\Square44x44Logo.png"
+       Description="A living island for your Windows desktop">
+        <uap:DefaultTile Wide310x150Logo="assets\Wide310x150Logo.png" Square310x310Logo="assets\LargeTile.png" Square71x71Logo="assets\SmallTile.png" />
+      </uap:VisualElements>
+      <Extensions>
+        <desktop:Extension Category="windows.startupTask" Executable="app\Nova Island.exe" EntryPoint="Windows.FullTrustApplication">
+          <desktop:StartupTask TaskId="SlackStartup" Enabled="true" DisplayName="Nova Island" />
+        </desktop:Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+</Package>

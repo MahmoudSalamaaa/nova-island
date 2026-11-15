@@ -1,0 +1,168 @@
+/* The Tasks window: Settings' look (prefs.css), plus the list, the quick add and the editor. */
+:root {
+  --low: 142, 142, 147;
+  --medium: 10, 132, 255;
+  --high: 255, 159, 10;
+  --urgent: 255, 69, 58;
+  --red: #ff453a;
+}
+.tag-low { --tag: var(--low); }
+.tag-medium { --tag: var(--medium); }
+.tag-high { --tag: var(--high); }
+.tag-urgent { --tag: var(--urgent); }
+
+.tasks-logo { background: linear-gradient(140deg, #30d158, #0a84ff); }
+.tasks-logo svg { width: 14px; height: 14px; stroke: #08080c; stroke-width: 3; }
+
+/* ---- side ---- */
+.side { width: 220px; }
+.side a .n { margin-inline-start: auto; color: var(--text-3); font-size: 11.5px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.side a .n.late { color: var(--red); }
+html[dir="rtl"] .side a.on::before { left: auto; right: 0; }
+.side-h { margin: 16px 11px 6px; font-size: 11px; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; color: var(--text-3); }
+.tagf i { width: 9px; height: 9px; border-radius: 50%; background: rgb(var(--tag)); box-shadow: 0 0 0 3px rgba(var(--tag), .18); flex: none; margin: 0 4px; }
+.tagf.on { background: rgba(var(--tag), .14); color: #fff; }
+.tagf.on::before { display: none; }
+
+/* ---- content ---- */
+.content { flex: 1; min-width: 0; overflow-y: auto; padding: 18px 26px 30px; }
+.content::-webkit-scrollbar { width: 8px; }
+.content::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, .1); border-radius: 4px; }
+.head { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.head h1 { margin: 0; font-size: 24px; font-weight: 700; letter-spacing: -.01em; }
+.head .sub { color: var(--text-3); font-size: 12.5px; margin-top: 3px; min-height: 16px; }
+.head-tools { display: flex; align-items: center; gap: 8px; }
+
+/* the quick add */
+.adder { background: var(--panel); box-shadow: inset 0 0 0 1px var(--stroke); border-radius: 14px; padding: 6px 6px 8px; margin-bottom: 18px; transition: box-shadow .2s; }
+.adder:focus-within { box-shadow: inset 0 0 0 1px rgba(111, 140, 255, .55), 0 8px 28px -14px rgba(111, 140, 255, .5); }
+.adder-row { display: flex; align-items: center; gap: 8px; }
+.adder-plus { width: 30px; height: 30px; display: grid; place-items: center; color: var(--accent); flex: none; }
+.adder-plus svg { width: 18px; height: 18px; stroke-width: 2.2; }
+#add-title { flex: 1; min-width: 0; height: 38px; border: 0; outline: none; background: none; font-size: 14.5px; }
+#add-title::placeholder { color: var(--text-3); }
+.adder-opts { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; padding: 4px 6px 0 38px; }
+html[dir="rtl"] .adder-opts { padding: 4px 38px 0 6px; }
+.chips { display: flex; gap: 4px; flex-wrap: wrap; }
+.chips button, .tagb { white-space: nowrap; }
+.chips button, .tagb {
+  height: 26px; padding: 0 10px; border-radius: 13px; font-size: 12px; font-weight: 550; color: var(--text-2);
+  background: rgba(255, 255, 255, .05); box-shadow: inset 0 0 0 1px var(--stroke); transition: background .15s, color .15s, box-shadow .15s;
+}
+.chips button:hover, .tagb:hover { color: #fff; background: rgba(255, 255, 255, .09); }
+.chips button.on { color: #fff; background: rgba(111, 140, 255, .22); box-shadow: inset 0 0 0 1px rgba(111, 140, 255, .55); }
+select, input[type="datetime-local"] {
+  height: 28px; padding: 0 8px; border-radius: 8px; border: 0; outline: none; font-size: 12.5px; color: #fff;
+  background: rgba(255, 255, 255, .07); box-shadow: inset 0 0 0 1px var(--stroke); color-scheme: dark;
+}
+select:disabled { opacity: .4; }
+select option { background: #1c1c24; }
+.tags-pick { display: flex; gap: 4px; flex-wrap: wrap; }
+.tagb { display: inline-flex; align-items: center; gap: 6px; }
+.tagb i { width: 8px; height: 8px; border-radius: 50%; background: rgb(var(--tag)); }
+.tagb[aria-checked="true"] { color: #fff; background: rgba(var(--tag), .2); box-shadow: inset 0 0 0 1px rgba(var(--tag), .6); }
+
+/* the list */
+.list { display: flex; flex-direction: column; gap: 6px; }
+.group-h { display: flex; align-items: center; gap: 8px; margin: 14px 4px 2px; font-size: 12px; font-weight: 650; color: var(--text-2); }
+.group-h:first-child { margin-top: 0; }
+.group-h .c { color: var(--text-3); font-weight: 600; }
+.group-h.late { color: var(--red); }
+.task {
+  position: relative; display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 8px 14px 8px 12px; border-radius: 12px; cursor: pointer;
+  background: var(--panel); box-shadow: inset 0 0 0 1px var(--stroke); transition: background .15s, box-shadow .15s, opacity .25s, transform .2s var(--spring);
+  animation: task-in .28s var(--ease) both;
+}
+@keyframes task-in { from { opacity: 0; transform: translateY(4px); } }
+.task::before { content: ""; position: absolute; inset-inline-start: 0; top: 12px; bottom: 12px; width: 3px; border-radius: 2px; background: rgb(var(--tag)); opacity: .9; }
+.task:hover { background: rgba(255, 255, 255, .075); }
+.task.sel { box-shadow: inset 0 0 0 1px rgba(111, 140, 255, .65); background: rgba(111, 140, 255, .08); }
+.check {
+  width: 22px; height: 22px; border-radius: 50%; flex: none; display: grid; place-items: center;
+  box-shadow: inset 0 0 0 1.6px rgba(var(--tag), .9); transition: background .15s, transform .15s var(--spring);
+}
+.check svg { width: 13px; height: 13px; stroke: #fff; stroke-width: 3; opacity: 0; transform: scale(.6); transition: opacity .15s, transform .2s var(--spring); }
+.check:hover { background: rgba(var(--tag), .18); }
+.check:hover svg { opacity: .5; transform: scale(1); }
+.task.done .check { background: rgb(var(--tag)); }
+.task.done .check svg { opacity: 1; transform: scale(1); }
+.check:active { transform: scale(.88); }
+.t-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.t-title { font-size: 14px; font-weight: 550; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.task.done .t-title { color: var(--text-3); text-decoration: line-through; text-decoration-color: rgba(235, 235, 245, .3); }
+.t-meta { display: flex; align-items: center; gap: 12px; font-size: 12px; color: var(--text-3); min-width: 0; }
+.t-meta span { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+.t-meta svg { width: 13px; height: 13px; flex: none; }
+.t-meta .m-note { overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.task.late .m-due { color: var(--red); font-weight: 600; }
+.pill {
+  flex: none; height: 22px; padding: 0 9px; border-radius: 11px; display: inline-flex; align-items: center;
+  font-size: 11.5px; font-weight: 650; color: rgb(var(--tag)); background: rgba(var(--tag), .14);
+}
+.tag-low .pill { color: var(--text-2); }
+
+.empty { text-align: center; color: var(--text-3); margin-top: 70px; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.empty svg { width: 40px; height: 40px; margin-bottom: 6px; color: rgba(255, 255, 255, .22); }
+.empty b { color: var(--text-2); font-size: 14.5px; font-weight: 600; }
+.empty span { font-size: 12.5px; }
+
+/* ---- the editor ---- */
+.editor {
+  flex: none; width: 290px; display: flex; flex-direction: column; gap: 14px; padding: 16px 18px; overflow-y: auto;
+  background: var(--side); box-shadow: -1px 0 0 var(--stroke); animation: ed-in .25s var(--ease) both;
+}
+html[dir="rtl"] .editor { box-shadow: 1px 0 0 var(--stroke); }
+@keyframes ed-in { from { opacity: 0; transform: translateX(12px); } }
+html[dir="rtl"] .editor { animation-name: ed-in-rtl; }
+@keyframes ed-in-rtl { from { opacity: 0; transform: translateX(-12px); } }
+.ed-head { display: flex; align-items: center; justify-content: space-between; }
+.ed-head b { font-size: 15px; }
+.icon-btn { width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center; color: var(--text-2); }
+.icon-btn:hover { background: rgba(255, 255, 255, .08); color: #fff; }
+.icon-btn svg { width: 15px; height: 15px; }
+.fld { display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: var(--text-3); font-weight: 600; }
+.fld input:not([type]), .fld textarea {
+  width: 100%; border: 0; outline: none; border-radius: 9px; padding: 8px 10px; font-size: 13.5px; font-weight: 450; color: #fff;
+  background: rgba(255, 255, 255, .06); box-shadow: inset 0 0 0 1px var(--stroke); resize: vertical; font-family: inherit; user-select: text;
+}
+.fld input:focus, .fld textarea:focus, select:focus, input[type="datetime-local"]:focus { box-shadow: inset 0 0 0 1px rgba(111, 140, 255, .7); }
+.fld select, .fld input[type="datetime-local"] { height: 34px; font-size: 13px; }
+.due-row { display: flex; gap: 6px; }
+.due-row input { flex: 1; min-width: 0; }
+.ed-meta { font-size: 11.5px; color: var(--text-3); line-height: 1.5; }
+.ed-actions { margin-top: auto; display: flex; justify-content: space-between; gap: 8px; }
+.ed-actions .btn { flex: 1; justify-content: center; }
+.btn.danger { color: #ff6b61; }
+.btn.danger:hover { background: rgba(255, 69, 58, .14); }
+
+.toast {
+  position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); padding: 9px 16px; border-radius: 10px; font-size: 12.5px; font-weight: 600;
+  background: rgba(40, 40, 52, .96); box-shadow: 0 10px 30px -8px rgba(0, 0, 0, .6), inset 0 0 0 1px var(--stroke); animation: toast-in .25s var(--spring);
+}
+@keyframes toast-in { from { opacity: 0; transform: translate(-50%, 8px); } }
+/* a title in the other language starts where the others do (an Arabic title in English, and back) */
+html[dir="ltr"] .t-title, html[dir="ltr"] .tk-card-title { text-align: left; }
+html[dir="rtl"] .t-title { text-align: right; }
+
+/* (1.8.4) finishing a task: the tick fills, a line strikes the title from start to end, then the
+   row slides off and closes up (tasks.js saves it as done once it has gone) */
+.t-title .t-txt { background: linear-gradient(currentColor, currentColor) no-repeat 0 55% / 0 1.6px; }
+html[dir="rtl"] .t-title .t-txt { background-position: 100% 55%; }
+.task.finishing .check { background: rgb(var(--tag)); }
+.task.finishing .check svg { opacity: 1; transform: scale(1); }
+.task.finishing .t-title { color: var(--text-3); transition: color .3s ease .1s; }
+.task.finishing .t-title .t-txt { animation: t-strike .34s cubic-bezier(.4, 0, .2, 1) forwards; }
+.task.finishing { max-height: 90px; overflow: hidden; pointer-events: none; animation: t-out .34s cubic-bezier(.4, 0, .2, 1) .36s forwards; }
+@keyframes t-strike { to { background-size: 100% 1.6px; } }
+@keyframes t-out {
+  60% { opacity: 0; transform: translateX(18px); }
+  to { opacity: 0; transform: translateX(18px); max-height: 0; min-height: 0; padding-top: 0; padding-bottom: 0; margin-top: -6px; box-shadow: none; }
+}
+html[dir="rtl"] .task.finishing { animation-name: t-out-rtl; }
+@keyframes t-out-rtl {
+  60% { opacity: 0; transform: translateX(-18px); }
+  to { opacity: 0; transform: translateX(-18px); max-height: 0; min-height: 0; padding-top: 0; padding-bottom: 0; margin-top: -6px; box-shadow: none; }
+}
+
+/* (1.8.4) hidden while it opens in Arabic, until the Arabic is in place (i18n-early.js) */
+html.i18n-wait body { visibility: hidden; }

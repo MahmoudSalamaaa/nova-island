@@ -1,0 +1,13 @@
+[package]
+name = "nova-core"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+# Settings files, the features list, the log and Copy report: byte-for-byte what 1.7 writes.
+[dependencies]
+serde_json = { version = "1", features = ["preserve_order", "float_roundtrip"] }
+
+[dependencies.windows]
+version = "0.62"
+features = ["Win32_Networking_WinHttp"]

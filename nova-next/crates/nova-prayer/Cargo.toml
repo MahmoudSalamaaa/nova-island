@@ -1,0 +1,14 @@
+[package]
+name = "nova-prayer"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+# Prayer times and the Hijri date (prayer.js): the same PrayTimes maths, and Windows' own ICU for
+# time zones and the Umm al-Qura calendar (the ICU family Chromium uses), so nothing is bundled.
+[dependencies]
+serde_json = { version = "1", features = ["preserve_order", "float_roundtrip"] }
+
+[dependencies.windows]
+version = "0.62"
+features = ["Win32_Foundation", "Win32_Globalization", "Win32_System_Time"]
