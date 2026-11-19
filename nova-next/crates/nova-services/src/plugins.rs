@@ -145,6 +145,20 @@ fn check_settings(list: &Value) -> Vec<Value> {
     out
 }
 
+fn check_meeting_cost(m: &Value) -> Option<Map<String, Value>> {
+    let settings = m["settings"].as_array()?;
+    if settings.len() != 2 { return None; }
+    for (key, min, max) in [("attendees", 1, 100), ("hourlyRate", 0, 10000)] {
+        let found: Vec<&Value> = settings.iter().filter(|s| s["key"] == key).collect();
+        if found.len() != 1 { return None; }
+        let s = found[0];
+        if s["type"] != "range" || s["min"] != min || s["max"] != max || s["step"] != 1 { return None; }
+        let default = s["default"].as_i64()?;
+        if default < min || default > max { return None; }
+    }
+    Some(Map::new())
+}
+
 /// A bundle is {manifest, sig}; returns the clean manifest, or None.
 pub fn check_bundle(bundle: &Value) -> Option<Value> {
     let m = bundle.get("manifest")?;
@@ -158,6 +172,7 @@ pub fn check_bundle(bundle: &Value) -> Option<Value> {
     let content = match m["kind"].as_str() {
         Some("radio") => check_radio(m)?,
         Some("tasks") => Map::new(),
+        Some("meeting-cost") => check_meeting_cost(m)?,
         _ => return None,
     };
     let mut out = json!({ "id": m["id"], "kind": m["kind"], "version": m["version"], "name": text(&m["name"], 40), "description": text(&m["description"], 160), "settings": check_settings(&m["settings"]) });
