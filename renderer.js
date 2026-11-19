@@ -33,6 +33,7 @@ const state = {
   sceneUntil: 0, // the island is a character (views/scene.js) until then
   radio: { on: false, name: '' }, // Quran Radio (plugin) playing, filled by views/radio.js
   radioTab: false, // the Quran Radio plugin is installed and on
+  meetingCostTab: false,
 };
 const feat = (key) => state.features[key] !== false;
 
@@ -1067,7 +1068,7 @@ function refreshTabs() {
   $$('.tab').forEach((b) => {
     const t = b.dataset.tab;
     // Downloads shows itself around download activity, Radio only with its plugin
-    const hide = t === 'downloads' ? !state.dl.tab : t === 'radio' ? !state.radioTab : !feat(TAB_FEATURE[t]);
+    const hide = t === 'downloads' ? !state.dl.tab : t === 'radio' ? !state.radioTab : t === 'meeting-cost' ? !state.meetingCostTab : !feat(TAB_FEATURE[t]);
     if (b.hidden !== hide) {
       b.hidden = hide;
       changed = true;
