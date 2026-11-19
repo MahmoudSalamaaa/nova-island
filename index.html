@@ -6,6 +6,7 @@
   <title>Nova Island</title>
   <link rel="stylesheet" href="themes.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="meeting-cost.css">
 </head>
 <body>
   <div id="island" class="idle" role="region" aria-label="Dynamic Island">
@@ -194,6 +195,7 @@
             <button role="tab" data-tab="media" class="tab" aria-label="Media">
               <svg class="s" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg><span>Media</span>
             </button>
+            <button role="tab" data-tab="meeting-cost" class="tab" aria-label="Meeting Cost" hidden><span>Cost</span></button>
             <button role="tab" data-tab="radio" class="tab" aria-label="Quran Radio" hidden>
               <svg class="s" viewBox="0 0 24 24"><path d="M4 9.5 18 4"/><rect x="3" y="9" width="18" height="11" rx="2"/><circle cx="8.5" cy="14.5" r="2.5"/><path d="M14 13h4M14 16h4"/></svg><span>Radio</span>
             </button>
@@ -448,6 +450,7 @@
           </div>
         </section>
 
+        <section id="v-meeting-cost" class="view" role="tabpanel" aria-label="Meeting Cost"><div id="meeting-cost-mount"></div></section>
         <!-- SYSTEM -->
         <!-- NEWS: opened by the bell in the header (no tab of its own) -->
         <section id="v-news" class="view" role="tabpanel" aria-label="News from Nova">
@@ -559,6 +562,7 @@
   <script src="views/news.js"></script>
   <script src="views/radio.js"></script>
   <script src="views/plugins.js"></script>
+  <script src="views/meeting-cost.js"></script>
   <script src="views/network.js"></script>
   <script src="views/companion.js"></script>
   <script src="views/smartclip.js"></script>
