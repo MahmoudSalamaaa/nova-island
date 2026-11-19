@@ -1,0 +1,27 @@
+{
+  "id": "meeting-cost-live",
+  "name": "Meeting Cost Live",
+  "kind": "meeting-cost",
+  "version": "0.1.0",
+  "description": "Track the estimated cost of meetings locally in real time.",
+  "settings": [
+    {
+      "key": "attendees",
+      "label": "Participants",
+      "type": "range",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "key": "hourlyRate",
+      "label": "Cost per participant per hour",
+      "type": "range",
+      "min": 0,
+      "max": 10000,
+      "step": 1,
+      "default": 250
+    }
+  ]
+}
