@@ -7,6 +7,7 @@ pub mod network;
 pub mod netspeed;
 pub mod news;
 pub mod plugins;
+pub mod focus_timer;
 pub mod prayer;
 pub mod privacy;
 pub mod system;
