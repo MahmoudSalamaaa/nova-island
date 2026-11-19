@@ -1,0 +1,27 @@
+{
+  "id": "focus-timer",
+  "name": "Focus Timer",
+  "kind": "focus-timer",
+  "version": "0.1.0",
+  "description": "Pomodoro focus and break sessions in the island",
+  "settings": [
+    {
+      "key": "focusMinutes",
+      "type": "range",
+      "label": "Focus duration",
+      "min": 5,
+      "max": 120,
+      "step": 5,
+      "default": 25
+    },
+    {
+      "key": "breakMinutes",
+      "type": "range",
+      "label": "Break duration",
+      "min": 1,
+      "max": 30,
+      "step": 1,
+      "default": 5
+    }
+  ]
+}
