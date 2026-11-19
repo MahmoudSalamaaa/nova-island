@@ -91,7 +91,7 @@
 
 // The signed plugin list controls visibility and lifecycle; never mount for an unknown kind.
 (() => {
-  const panel = document.getElementById('focus-timer-plugin');
+  const panel = document.getElementById('v-focus-timer');
   const mountPoint = document.getElementById('focus-timer-mount');
   if (!panel || !mountPoint || !window.nova?.plugins || !window.nova?.onPlugins) return;
   let instance = null;
@@ -102,7 +102,8 @@
       instance?.destroy();
       instance = null;
       config = '';
-      panel.hidden = true;
+      state.focusTimerTab = false;
+      refreshTabs();
       return;
     }
     const values = plugin.values || {};
@@ -118,7 +119,10 @@
           window.showToast('done', phase === 'focus' ? 'Focus session complete' : 'Break complete', '✓', 0, 4000);
       }
     });
-    panel.hidden = false;
+    if (!state.focusTimerTab) {
+      state.focusTimerTab = true;
+      refreshTabs();
+    }
   }
   window.nova.onPlugins(apply);
   window.nova.plugins().then(apply).catch(() => {});
