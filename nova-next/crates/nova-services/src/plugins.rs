@@ -145,6 +145,22 @@ fn check_settings(list: &Value) -> Vec<Value> {
     out
 }
 
+/// Validate Focus Timer configuration independently of bundle signature verification.
+/// The timer has no executable payload or network permissions.
+fn check_focus_timer(m: &Value) -> Option<Map<String, Value>> {
+    let settings = m["settings"].as_array()?;
+    if settings.len() != 2 { return None; }
+    for (key, min, max, default) in [("focusMinutes", 5, 120, 25), ("breakMinutes", 1, 30, 5)] {
+        let matches: Vec<&Value> = settings.iter().filter(|s| s["key"] == key).collect();
+        if matches.len() != 1 { return None; }
+        let setting = matches[0];
+        if setting["type"] != "range" || setting["min"] != min || setting["max"] != max || setting["default"] != default { return None; }
+        let step = setting["step"].as_i64()?;
+        if step < 1 || step > 5 { return None; }
+    }
+    Some(Map::new())
+}
+
 /// A bundle is {manifest, sig}; returns the clean manifest, or None.
 pub fn check_bundle(bundle: &Value) -> Option<Value> {
     let m = bundle.get("manifest")?;
@@ -158,6 +174,7 @@ pub fn check_bundle(bundle: &Value) -> Option<Value> {
     let content = match m["kind"].as_str() {
         Some("radio") => check_radio(m)?,
         Some("tasks") => Map::new(),
+        Some("focus-timer") => check_focus_timer(m)?,
         _ => return None,
     };
     let mut out = json!({ "id": m["id"], "kind": m["kind"], "version": m["version"], "name": text(&m["name"], 40), "description": text(&m["description"], 160), "settings": check_settings(&m["settings"]) });
@@ -596,5 +613,22 @@ mod radio_tests {
         assert!(check_surahs(&json!({ "server": "https://evil.example/audio/x/", "list": [1] })).is_none());
         assert!(check_surahs(&json!({ "server": "https://cdn.mp3quran.net/audio/x/r1/", "list": [2, 1] })).is_none());
         assert!(check_surahs(&json!({ "server": "https://cdn.mp3quran.net/audio/x/r1/", "list": [1, 115] })).is_none());
+    }
+}
+
+#[cfg(test)]
+mod focus_timer_manifest_tests {
+    use super::*;
+
+    #[test]
+    fn focus_timer_manifest_has_strict_bounds() {
+        let good: Value = serde_json::from_str(include_str!("../../../plugins/focus-timer/manifest.json")).unwrap();
+        assert!(check_focus_timer(&good).is_some());
+        let mut bad = good.clone();
+        bad["settings"][0]["max"] = json!(10000);
+        assert!(check_focus_timer(&bad).is_none());
+        let mut duplicate = good.clone();
+        duplicate["settings"][1]["key"] = json!("focusMinutes");
+        assert!(check_focus_timer(&duplicate).is_none());
     }
 }
